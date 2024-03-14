@@ -293,7 +293,7 @@ def _validate_and_wrap_lc_model(lc_model, loader_fn):
         )
 
     if isinstance(lc_model, langchain.agents.agent.AgentExecutor) and not any(
-        isinstance(lc_model.agent.llm_chain.llm, supported_llm) for supported_llm in _SUPPORTED_LLMS
+        isinstance(lc_model.agent, supported_llm) for supported_llm in _SUPPORTED_LLMS
     ):
         logger.warning(
             _UNSUPPORTED_LLM_WARNING_MESSAGE,
